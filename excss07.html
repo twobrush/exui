@@ -6,6 +6,32 @@
     <style>
         /* 고정폭 레이아웃 구현 */
         /* display: table-cell; */
+
+        .container{
+            width: 1080px;
+            margin:0px auto 0px auto;
+        }
+        #header{
+            background-color: #fc2fb7;
+        }
+        #aside{
+            background-color: #f167b3;
+            width: 300px;
+            /* float: left; 06과 다르게 플롯안쓸거야~ */
+            display: table-cell;
+        }
+        #content{
+            background-color: #fa96c8;
+            width: 780px;
+            display: table-cell;
+            /* margin-left: 300px; */
+        }
+
+        #footer{
+            /* clear: left; ; */
+            /* 클리어주면 left로 뜬게 없는 지점까지 내려감 */
+            background-color: #fdabd2;
+        }
         
     </style>
 </head>

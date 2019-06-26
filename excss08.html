@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title>CSS IMPORTANT</title>
     <style>
+        div{
+            font-size: 15px;
+            color: rgb(181, 215, 245);
+            border: 1px solid black
+            
+        }
         /* 기본적으로 상속이 되는 속성들 : font-size, color ... */
         /* 기본적으로 상속이 되지 않는 속성들 : border ... */
 
@@ -14,12 +20,24 @@
         */
         /* @media print { 인쇄시에만 적용되는 스타일 } */
         /* 인쇄시에는 p 엘리먼트가 보이지 않도록 설정 */
+        @media print{
+            p{
+                display: none;
+            }
+        }
+        div #p1{color: hotpink;} 
+        /* 1010점 */
+        #p{color: lightsalmon;}
+        .myp{color: yellow;}     
+        p{color: coral !important;}
+        p{color: yellowgreen;}
+
     </style>
 </head>
 <body>
     <div>
         div내용
-        <p id="p1" class="myp">
+        <p id="p1" class="myp" style="color:indianred">
             * 엘리먼트의 스타일 적용 규칙
             1.해당 엘리먼트에 지정된 스타일 속성 값 적용
             2.해당 엘리먼트에 지정된 스타일 속성이 없는 경우, 조상 엘리먼트로부터 상속된 값을 적용

@@ -11,10 +11,36 @@
             /* 블럭엘리먼트는 float 된 엘리먼트 밑으로 깔려서 배치될 수 있지만, */
             /* 블럭엘리먼트 내부의 텍스트나 인라인엘리먼트는 float된 엘리먼트를 피해서 배치된다 */
             /* clear : 현재 엘리먼트의 왼쪽 또는 오른쪽 또는 양쪽모두에 float된 엘리먼트가 없을 때까지 아래로 내려가서 배치 */
+            float: left;
+            /* float 띄워서 다음에 오는 엘리먼트들이 밑으로 겨들어감 근데 글자는 안겹치고 피해서 배치가됨 */
         }
 
         /* 고정폭 레이아웃 구현 */
         /* inline-block, float, margin, clear */
+        .container{
+            width: 1080px;
+            margin:0px auto 0px auto;
+        }
+        #header{
+            background-color: #fc2fb7;
+        }
+        #aside{
+            background-color: #f167b3;
+            width: 300px;
+            float: left;
+        
+        }
+        #content{
+            background-color: #fa96c8;
+            width: 700px;
+            margin-left: 300px;
+        }
+
+        #footer{
+            clear: left; ;
+            /* 클리어주면 left로 뜬게 없는 지점까지 내려감 */
+            background-color: #fdabd2;
+        }
         
     </style>
 </head>
