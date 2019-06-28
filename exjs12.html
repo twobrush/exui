@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS DOM EX</title>
+    <style>
+        #product img , #cart img {
+            width: 50px;
+            height: 50px;
+        }
+        #product , #cart {
+            border: 1px solid black;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>상품목록</h1>
+    <div id="product">
+        <img src="./img/car1.png" />
+        <img src="./img/car2.png" />
+        <img src="./img/car3.png" />
+    </div>
+    <h1>장바구니</h1>
+    <div id="cart"></div>
+    <script>
+        // 1. id 가 product 인 div 안에 있는 img 엘리먼트 클릭하면, 
+        //  클릭한 img 엘리먼트와 동일한 엘리먼트를 id 가 cart 인 div 에 추가
+            var carDiv = document.querySelector('#cart');
+            var prodList = document.querySelectorAll('#product img');
+            for (var i = 0; i < prodList.length; i++) {
+                var p = prodList[i];
+                p.onclick = function(){
+                    // alert('집가고싶어');
+                //    carDiv.innerHTML += '<img src="'+this.src+'" />';
+                   var newImg = document.createElement('img');
+                   newImg.src = this.src; //'<img src="'+this.src+'" />'
+                   carDiv.appendChild(newImg);
+                   newImg.onclick = function(){
+                       this.parentElement.removeChild(this);
+                       //carDiv.
+                   }
+                  
+                }
+            }
+
+     
+         
+      
+        // 2. id 가 cart 인 div 안에 있는 img 엘리먼트 클릭하면, 
+        //  클릭한 img 엘리먼트를 삭제
+       carDiv.onclick = function(ev){
+    //    console.log(this); //carDiv
+    //    console.log(ev.currentTarget);  //carDiv
+       console.log(ev.target); //클릭된 img
+       //클릭된 img엘리먼트의 부모엘리먼트.removechild(클릭된img엘리먼트);
+        ev.target.parentElement.removeChild(ev.target);  //고칠일없음
+        // carDiv.removeChild(ev.target); // 짧음 위에거랑같은뜻
+       };
+    </script>
+</body>
+</html>

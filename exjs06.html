@@ -19,9 +19,14 @@
 <body>
     <table>
         <caption>상품목록</caption>
-        <thead><th>상품번호</th><th>상품명</th><th>가격</th></thead>
+        <thead> <tr></tr><th>상품번호</th><th>상품명</th><th>가격</th></tr></thead>
         <tbody id="prods"></tbody>
-        <tfoot><td colspan="3">상품번호:<input type="text" id="pno" /> 상품명:<input type="text" id="pname" />가격:<input type="text" id="price" /><button id="save">저장</button></td></tfoot>
+        <tfoot>
+            <td colspan="3">
+                상품번호:<input type="text" id="pno" /> 
+                상품명:<input type="text" id="pname" />
+                가격:<input type="text" id="price" /><button id="save">저장</button></td>
+                <tr></tfoot>
     </table>
     <script>
         // 상품객체들을 저장하는 배열 생성
@@ -34,14 +39,20 @@
         //1. 현재 prodList 에 저장되어 있는 상품들의 정보를 상품목록 테이블의 tbody에 출력
 
         var tbody =document.querySelector('#prods');
-        
+       
+       
+        function printProdList(){
+            var html = '';
         for (var i = 0; i <prodList.length; i++) {
            
         var p = prodList[i];
-        tbody.innerHTML += '<tr>'+'<td>' + p.no+'</td>'+'<td>'+p.name+'</td>'+'<td>'+p.price+'<td/>'+'<tr>';
+       html += '<tr>'+'<td>' + p.no+'</td>'+'<td>'+p.name+'</td>'+'<td>'+p.price+'<td/>'+'<tr>';
             
+            }   //함수로만듬 함수로 안만들면 다돌아다녀서 고쳐야댕
+        tbody.innerHTML = html;
         }
         
+        printProdList(); //함수 실행
         
 
         
@@ -49,13 +60,21 @@
         //  prodList 에 저장되어 있는 상품들의 정보를 상품목록 테이블의 tbody에 다시 출력
         //  input 엘리먼트에 입력되어 있는 값들은 초기화
 
-            var pno1 = document.querySelector('#pno');
-            var pname1 = document.querySelector('#pname');
-            var price1 = document.querySelector('#price');
-            var save1 = document.querySelector('#save');
+            var noIn = document.querySelector('#pno');
+            var nameIn = document.querySelector('#pname');
+            var priceIn = document.querySelector('#price');
+            var saveBtn = document.querySelector('#save');
 
-            save1.onclick = function(){
-            
+            saveBtn.onclick = function(){
+                var noVal = Number(noIn.value);
+                var priceVal = Number(price.value);
+                prodList.push( { no: noVal, name: nameIn.value, price: priceVal } );
+                printProdList(); 
+
+                noIn.value = '';
+                nameIn.value = '';
+                priceIn.value = '';
+
 
 
             }
